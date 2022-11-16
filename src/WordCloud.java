@@ -1,6 +1,9 @@
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Insets;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,6 +14,10 @@ import java.util.stream.Collectors;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 public class WordCloud extends JFrame {
 
@@ -23,11 +30,11 @@ public class WordCloud extends JFrame {
 
 	static final String FONT_NAME = "맑은 고딕";
 	static final int FONT_STYLE = Font.BOLD;
-	static final int FONT_SIZE = 11;
+	static final int FONT_SIZE = 13;
 
 	public WordCloud() {
 		setTitle("WordCloud"); // set frame title
-		setSize(1000, 800); // set frame size (width, height)
+		setSize(1500, 1000); // set frame size (width, height)
 		setDefaultCloseOperation(EXIT_ON_CLOSE); // turn off the process when close the frame
 		setLocationRelativeTo(null); // set frame location to center
 
@@ -41,6 +48,7 @@ public class WordCloud extends JFrame {
 		add(titleLbl = new JLabel("WordCloud", 0), "North");
 		add(c = new JPanel(new FlowLayout(1, 5, 5)));
 		titleLbl.setFont(new Font(FONT_NAME, FONT_STYLE, FONT_SIZE));
+		c.setBorder(new CompoundBorder(new EmptyBorder(10, 10, 10, 10), new LineBorder(Color.white, 50, true)));
 		((JPanel) getContentPane()).setBackground(Color.WHITE);
 		c.setOpaque(false);
 	}
@@ -90,4 +98,5 @@ public class WordCloud extends JFrame {
 	public static void main(String[] args) {
 		new WordCloud();
 	}
+
 }
